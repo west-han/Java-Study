@@ -1,23 +1,50 @@
 public class MyString {
     private byte[] string;
+    private static int count = 0;
 
-    public MyString() {}
+    private MyString() {
+        count++;
+    }
 
-    public MyString(byte[] string) {
+    private MyString(byte[] string) {
+        this();
         this.string = string;
     }
 
-    public MyString(String string) {
+    private MyString(String string) {
+        this();
         this.string = string.getBytes();
     }
 
-    public MyString(int num) {
+    private MyString(int num) {
+        this();
         this.string = String.valueOf(num).getBytes();
     }
 
     public MyString(MyString myString) {
+        this();
         // 복사 생성자
         this.deepCopy(myString);
+    }
+
+    public static MyString newString() {
+        return new MyString();
+    }
+
+    public static MyString newString(byte[] string) {
+        return new MyString(string);
+    }
+
+    public static MyString newString(int num) {
+        return new MyString(num);
+    }
+
+    public static MyString newString(String string) {
+        return new MyString(string);
+    }
+
+    public static int getCount() {
+        return count;
     }
 
     private void deepCopy(MyString rhs) {
@@ -66,9 +93,15 @@ public class MyString {
     }
 
     public static void main(String[] args) {
-        MyString str = new MyString("Test");
+        /*MyString str = new MyString("Test");
         System.out.println(str.getString());
         MyString str2 = new MyString(512);
-        System.out.println(str2.getString());
+        System.out.println(str2.getString());*/
+
+        MyString s1 = MyString.newString(10);
+        MyString s2 = MyString.newString("Test");
+        System.out.println(s1.getString());
+        System.out.println(s2.getString());
+        System.out.println(MyString.getCount());
     }
 }

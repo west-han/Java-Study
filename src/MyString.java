@@ -2,7 +2,7 @@ public class MyString {
     private byte[] string;
     private static int count = 0;
 
-    private MyString() {
+    protected MyString() {
         count++;
     }
 
@@ -52,9 +52,10 @@ public class MyString {
     }
 
     public void setString(String string) {
-        this.string = new byte[string.length()];
-        for (int i = 0; i < string.length(); i++) {
-            this.string[i] = (byte) string.charAt(i);
+        if (onSetString(string)) {
+            this.string = string.getBytes();
+        } else {
+            this.string = "***".getBytes();
         }
     }
 
@@ -63,7 +64,7 @@ public class MyString {
         if (string != null) {
             for (byte b : string) {
                 str.append((char) b);
-            }
+             }
         }  else {
             str.append("(null)");
         }
@@ -92,16 +93,42 @@ public class MyString {
         return Integer.compare(string.length, param.length());
     }
 
+    protected boolean onSetString(String string) {
+        return true;
+    }
+
     public static void main(String[] args) {
-        /*MyString str = new MyString("Test");
+        /*
+        MyString str = new MyString("Test");
         System.out.println(str.getString());
         MyString str2 = new MyString(512);
         System.out.println(str2.getString());*/
-
+        /*
         MyString s1 = MyString.newString(10);
         MyString s2 = MyString.newString("Test");
         System.out.println(s1.getString());
         System.out.println(s2.getString());
         System.out.println(MyString.getCount());
+        */
+
+        MyStringEx myStringEx = new MyStringEx();
+        myStringEx.setString("비속어");
+        System.out.println(myStringEx.getString());
+    }
+}
+
+class MyStringEx extends MyString {
+
+    public MyStringEx() {
+        super();
+    }
+
+    public MyStringEx(MyString myString) {
+        super(myString);
+    }
+
+    @Override
+    protected boolean onSetString(String string) {
+        return !string.contains("비속어");
     }
 }

@@ -1,3 +1,5 @@
+package syntax;
+
 public class ArrayRecursionPractice {
     public static void main(String[] args) {
         final int SIZE = 5;
@@ -21,7 +23,6 @@ public class ArrayRecursionPractice {
         }
 */
 
-/*
         // 달팽이
         boolean isDirectionX = true;
         int step = 1;
@@ -37,15 +38,12 @@ public class ArrayRecursionPractice {
             }
             step *= -1;
         }
-*/
-/*
         for (int i = 0; i < SIZE; i++) {
             for (int j = 0; j < SIZE; j++) {
                 System.out.print(arr[i][j] + "\t");
             }
             System.out.println();
         }
-*/
 
         String hello = "Hello!!";
         reverse(hello, 0);

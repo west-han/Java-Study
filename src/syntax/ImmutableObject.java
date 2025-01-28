@@ -1,3 +1,5 @@
+package syntax;
+
 class MyInt {
     private final int data;
     public MyInt(int data) {

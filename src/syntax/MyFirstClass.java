@@ -1,8 +1,10 @@
+package syntax;
+
 public class MyFirstClass {
     private int data;
 
     public MyFirstClass() {
-        System.out.println("MyFirstClass.MyFirstClass - constructor called");
+        System.out.println("grammer.MyFirstClass.grammer.MyFirstClass - constructor called");
     }
 
     public int getData() {

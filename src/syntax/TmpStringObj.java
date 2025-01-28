@@ -1,3 +1,5 @@
+package syntax;
+
 public class TmpStringObj {
     public static void main(String[] args) {
         // "hello"는 JVM 메모리 상에서 Runtime Constant Pool에 위치

@@ -1,3 +1,5 @@
+package syntax;
+
 public class Copy {
     static class Address {
         private String address;

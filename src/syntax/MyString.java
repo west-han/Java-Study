@@ -1,3 +1,5 @@
+package syntax;
+
 public class MyString {
     private byte[] string;
     private static int count = 0;
@@ -99,16 +101,16 @@ public class MyString {
 
     public static void main(String[] args) {
         /*
-        MyString str = new MyString("Test");
+        grammer.MyString str = new grammer.MyString("Test");
         System.out.println(str.getString());
-        MyString str2 = new MyString(512);
+        grammer.MyString str2 = new grammer.MyString(512);
         System.out.println(str2.getString());*/
         /*
-        MyString s1 = MyString.newString(10);
-        MyString s2 = MyString.newString("Test");
+        grammer.MyString s1 = grammer.MyString.newString(10);
+        grammer.MyString s2 = grammer.MyString.newString("Test");
         System.out.println(s1.getString());
         System.out.println(s2.getString());
-        System.out.println(MyString.getCount());
+        System.out.println(grammer.MyString.getCount());
         */
 
         MyStringEx myStringEx = new MyStringEx();

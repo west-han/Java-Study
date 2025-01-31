@@ -1,10 +1,7 @@
-package syntax.usefulclasses;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 import java.math.RoundingMode;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
 import java.util.StringTokenizer;
@@ -60,7 +57,7 @@ class Point implements Cloneable {
     }
 }
 
-public class ObjectMethods {
+public class UsefulClasses {
     public static void main(String[] args) {
         // -- equals() --
         TestClass t1 = new TestClass(1);

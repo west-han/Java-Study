@@ -1,4 +1,4 @@
-package start;
+package basic;
 
 class MusicPlayer {
     private int volume = 0;

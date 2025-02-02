@@ -1,4 +1,4 @@
-package start;
+package basic;
 
 class Rectangle {
     int width = 0;

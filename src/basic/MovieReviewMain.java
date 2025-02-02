@@ -1,4 +1,4 @@
-package start;
+package basic;
 
 class MovieReview {
     private String title;

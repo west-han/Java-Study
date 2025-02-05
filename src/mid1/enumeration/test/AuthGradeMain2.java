@@ -24,12 +24,12 @@ public class AuthGradeMain2 {
     }
 
     private static void printMenu(AuthGrade authGrade) {
-        final String[] menus = {"", "메인 화면", "이메일 관리 화면", "관리자 화면"};
+        final String[] menus = {"메인 화면", "이메일 관리 화면", "회원 정보 조회", "관리자 화면"};
 
-        int limit = authGrade.name().equals("관리자") ? AuthGrade.values().length : authGrade.getLevel();
+        int limit = authGrade.name().equals("ADMIN") ? menus.length : authGrade.getLevel();
         System.out.println("== 메뉴 목록 ==");
-        for (int i = 0; i < authGrade.getLevel(); i++) {
-            System.out.println(menus[i+1]);
+        for (int i = 0; i < limit; i++) {
+            System.out.println(menus[i]);
         }
     }
 }

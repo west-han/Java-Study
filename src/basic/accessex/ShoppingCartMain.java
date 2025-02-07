@@ -1,4 +1,4 @@
-package basic;
+package basic.accessex;
 
 class ShoppingCart {
     private Item[] items = new Item[10];

@@ -1,4 +1,4 @@
-package basic;
+package basic.oopex;
 
 class MusicPlayer {
     private int volume = 0;

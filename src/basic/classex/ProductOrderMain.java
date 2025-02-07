@@ -1,4 +1,4 @@
-package basic;
+package basic.classex;
 
 import java.util.Scanner;
 

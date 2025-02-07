@@ -1,4 +1,4 @@
-package basic;
+package basic.classex;
 
 class MovieReview {
     private String title;

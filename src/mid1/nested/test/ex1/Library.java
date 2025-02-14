@@ -1,6 +1,7 @@
 package mid1.nested.test.ex1;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Library {
     private final Book[] books;
@@ -22,23 +23,18 @@ public class Library {
 
     public void showBooks() {
         System.out.println("== 책 목록 출력 ==");
-        Arrays.stream(books).forEach(System.out::println);
+        for (int i = 0; i < size; i++) {
+            System.out.println(books[i].toString());
+        }
     }
 
-    private static class Book {
-        private final String title;
-        private final String author;
-
-        public Book(String title, String author) {
-            this.title = title;
-            this.author = author;
-        }
+    private record Book(String title, String author) {
 
         @Override
-        public String toString() {
-            return "도서 제목: " + title + ", 저자: " + author;
+            public String toString() {
+                return "도서 제목: " + title + ", 저자: " + author;
+            }
         }
-    }
 
 
 }

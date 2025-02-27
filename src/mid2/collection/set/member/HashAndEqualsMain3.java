@@ -20,5 +20,10 @@ public class HashAndEqualsMain3 {
         System.out.println("searchValue.hashCode() = " + searchValue.hashCode());
         boolean contains = set.contains(searchValue);
         System.out.println("contains = " + contains);
+
+        // 해시코드는 충돌 가능
+        // HashSet에서는 먼저 hashCode()를 이용해 인덱스를 구한 뒤 실제 객체 비교는 equals() 이용하므로 문제 없이 동작
+        System.out.println("Aa".hashCode());
+        System.out.println("BB".hashCode());
     }
 }

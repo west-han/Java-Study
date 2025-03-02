@@ -11,10 +11,14 @@ public class SetOperationsTest {
 
         Set<Integer> union = new HashSet<>(set1);
         union.addAll(set2);
+        System.out.println(union);
 
-        Set<Integer> intersection = new HashSet<>(set1);
+        HashSet<Integer> intersection = new HashSet<>(set1);
+        intersection.retainAll(set2);
+        System.out.println(intersection);
 
-        Set<Integer> diff = new HashSet<>(set2);
-        diff.removeAll(set1);
+        HashSet<Integer> diff = new HashSet<>(set1);
+        diff.removeAll(set2);
+        System.out.println(diff);
     }
 }

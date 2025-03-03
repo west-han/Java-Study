@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class MapMain {
+public class MapMain1 {
     public static void main(String[] args) {
         HashMap<String, Integer> studentMap = new HashMap<String, Integer>();
 

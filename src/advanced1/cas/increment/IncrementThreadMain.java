@@ -1,6 +1,4 @@
-package advanced1.cas;
-
-import kotlin.jvm.Volatile;
+package advanced1.cas.increment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +11,8 @@ public class IncrementThreadMain {
     public static void main(String[] args) throws InterruptedException {
         test(new BasicInteger());
         test(new VolatileInteger());
-        test(new SynchronizedInteger());
+        test(new SyncInteger());
+        test(new MyAtomicInteger());
     }
 
     private static void test(IncrementInteger incrementInteger) throws InterruptedException {

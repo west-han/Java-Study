@@ -1,6 +1,6 @@
-package advanced1.cas;
+package advanced1.cas.increment;
 
-public class SynchronizedInteger implements IncrementInteger {
+public class SyncInteger implements IncrementInteger {
 
     private int value;
 

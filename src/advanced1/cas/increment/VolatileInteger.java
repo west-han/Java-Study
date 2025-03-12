@@ -1,4 +1,4 @@
-package advanced1.cas;
+package advanced1.cas.increment;
 
 public class VolatileInteger implements IncrementInteger {
 

@@ -1,7 +1,5 @@
 package advanced1.thread.executor.future;
 
-import advanced1.util.ThreadUtils;
-
 import static advanced1.util.MyLogger.log;
 
 public class SumTaskMainV1 {
@@ -46,7 +44,11 @@ public class SumTaskMainV1 {
         @Override
         public void run() {
             log("작업 시작");
-            ThreadUtils.sleep(2000);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             int sum = 0;
             for (int i = startValue; i <= endValue; i++) {
                 sum += i;

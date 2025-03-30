@@ -15,8 +15,8 @@ public class LockSupportMainV1 {
         log("Tread-1 state: " + thread1.getState());
 
         log("main -> unpark(Thread-1)");
-//        LockSupport.unpark(thread1); // 1. unpark 사용
-        thread1.interrupt();
+        LockSupport.unpark(thread1); // 1. unpark 사용
+//        thread1.interrupt(); // 2. interrupt() 사용
     }
 
     static class ParkTest implements Runnable {

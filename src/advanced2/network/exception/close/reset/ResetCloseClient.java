@@ -33,7 +33,7 @@ public class ResetCloseClient {
         }
 
         try {
-            output.write(1);
+            output.write(   1);
         } catch (SocketException e) {
             // java.net.SocketException: Broken pipe
             e.printStackTrace();

@@ -1,7 +1,5 @@
 package mid2.collection.compare.test;
 
-import org.jetbrains.annotations.NotNull;
-
 public class Card implements Comparable<Card> {
     private Suit suit;
     private int number;
@@ -28,7 +26,7 @@ public class Card implements Comparable<Card> {
     }
 
     @Override
-    public int compareTo(@NotNull Card o) {
+    public int compareTo(Card o) {
         if (this.number != o.number) {
             return this.number - o.number;
         } else {

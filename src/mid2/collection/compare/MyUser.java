@@ -1,7 +1,5 @@
 package mid2.collection.compare;
 
-import org.jetbrains.annotations.NotNull;
-
 public class MyUser implements Comparable<MyUser> {
 
     private String id;
@@ -21,7 +19,7 @@ public class MyUser implements Comparable<MyUser> {
     }
 
     @Override
-    public int compareTo(@NotNull MyUser o) {
+    public int compareTo(MyUser o) {
         return this.age - o.age;
     }
 

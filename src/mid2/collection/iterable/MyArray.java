@@ -1,7 +1,5 @@
 package mid2.collection.iterable;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Iterator;
 
 public class MyArray implements Iterable<Integer> {
@@ -12,7 +10,6 @@ public class MyArray implements Iterable<Integer> {
         this.numbers = numbers;
     }
 
-    @NotNull
     @Override
     public Iterator<Integer> iterator() {
         return new MyArrayIterator(numbers);

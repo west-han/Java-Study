@@ -35,6 +35,7 @@ public class WriteHandler implements Runnable {
                 }
 
                 if (input.equals("/exit")) {
+                    output.writeUTF(input);
                     break;
                 }
 

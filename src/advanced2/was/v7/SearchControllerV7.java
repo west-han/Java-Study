@@ -1,13 +1,15 @@
-package advanced2.was.v6;
+package advanced2.was.v7;
 
 import advanced2.was.httpserver.HttpRequest;
 import advanced2.was.httpserver.HttpResponse;
+import advanced2.was.httpserver.servlet.annotation.Controller;
+import advanced2.was.httpserver.servlet.annotation.Mapping;
 
-import java.io.IOException;
+@Controller
+public class SearchControllerV7 {
 
-public class SearchController {
-
-    public void search(HttpRequest request, HttpResponse response) throws IOException {
+    @Mapping("/search")
+    public void search(HttpRequest request, HttpResponse response) {
         String query = request.getQueryParameter("q");
         response.writeBody("<h1>search</h1>");
         response.writeBody("<ul>");

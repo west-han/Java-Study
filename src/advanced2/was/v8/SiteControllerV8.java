@@ -1,13 +1,12 @@
-package advanced2.was.v7;
+package advanced2.was.v8;
 
-import advanced2.was.httpserver.HttpRequest;
 import advanced2.was.httpserver.HttpResponse;
 import advanced2.was.httpserver.servlet.annotation.Mapping;
 
-public class SiteControllerV7 {
+public class SiteControllerV8 {
 
     @Mapping("/")
-    public void home(HttpRequest request, HttpResponse response) {
+    public void home(HttpResponse response) {
         response.writeBody("<h1>home</home>");
         response.writeBody("<ul>");
         response.writeBody("<li><a href='/site1'>site1</a></li>");
@@ -17,12 +16,20 @@ public class SiteControllerV7 {
     }
 
     @Mapping("/site1")
-    public void site1(HttpRequest request, HttpResponse response) {
+    public void site1(HttpResponse response) {
         response.writeBody("<h1>site1</h1>");
     }
 
     @Mapping("/site2")
-    public void site2(HttpRequest request, HttpResponse response) {
+    public void site2(HttpResponse response) {
         response.writeBody("<h1>site2</h1>");
     }
+
+    // 중복 체크 확인용
+/*
+    @Mapping("/site2")
+    public void site22(HttpResponse response) {
+        response.writeBody("<h1>site2</h1>");
+    }
+*/
 }

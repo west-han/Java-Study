@@ -17,7 +17,7 @@ public class FileMemberRepository implements MemberRepository {
     @Override
     public void add(Member member) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH, UTF_8, true))) {
-            bw.write(member.getId() + DELIMITER + member.getName() + DELIMITER + member.getAge());
+            bw.write(member.getId() + DELIMITER + member.getName() + DELIMITER + member.getAge() + "\n");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

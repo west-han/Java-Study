@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
 import java.net.Socket;
 
 import static advanced2.util.MyLogger.log;
@@ -40,6 +41,8 @@ public class HttpRequestHandler implements Runnable {
             servletManager.execute(request, response);
             response.flush();
             log("HTTP 응답 완료");
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
     }
 

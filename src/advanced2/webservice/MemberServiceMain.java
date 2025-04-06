@@ -1,25 +1,25 @@
-package advanced2.was.v6;
+package advanced2.webservice;
 
+import advanced2.io.member.MemberRepository;
+import advanced2.io.member.impl.FileMemberRepository;
 import advanced2.was.httpserver.HttpServer;
 import advanced2.was.httpserver.ServletManager;
 import advanced2.was.httpserver.servlet.DiscardServlet;
-import advanced2.was.httpserver.servlet.reflection.ReflectionServlet;
-import advanced2.was.v5.servlet.HomeServlet;
+import advanced2.was.httpserver.servlet.annotation.AnnotationServletV3;
 
 import java.io.IOException;
 import java.util.List;
 
-public class ServerMainV6 {
+public class MemberServiceMain {
 
     private static final int PORT = 12345;
 
     public static void main(String[] args) throws IOException {
-        List<Object> controllers = List.of(new SiteControllerV6(), new SearchControllerV6());
-        ReflectionServlet reflectionServlet = new ReflectionServlet(controllers);
-
+        MemberRepository memberRepository = new FileMemberRepository();
+        MemberController memberController = new MemberController(memberRepository);
+        AnnotationServletV3 servlet = new AnnotationServletV3(List.of(memberController));
         ServletManager servletManager = new ServletManager();
-        servletManager.setDefaultServlet(reflectionServlet);
-        servletManager.add("/", new HomeServlet());
+        servletManager.setDefaultServlet(servlet);
         servletManager.add("/favicon.ico", new DiscardServlet());
 
         HttpServer server = new HttpServer(PORT, servletManager);

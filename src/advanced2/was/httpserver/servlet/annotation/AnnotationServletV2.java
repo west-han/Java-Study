@@ -1,0 +1,61 @@
+package advanced2.was.httpserver.servlet.annotation;
+
+import advanced2.was.httpserver.HttpRequest;
+import advanced2.was.httpserver.HttpResponse;
+import advanced2.was.httpserver.HttpServlet;
+import advanced2.was.httpserver.PageNotFoundException;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
+
+public class AnnotationServletV2 implements HttpServlet {
+
+    private final List<Object> controllers;
+
+    public AnnotationServletV2(List<Object> controllers) {
+        this.controllers = controllers;
+    }
+
+    @Override
+    public void service(HttpRequest request, HttpResponse response) {
+        String requestPath = request.getPath();
+
+        for (Object controller : controllers) {
+            Method[] methods = controller.getClass().getDeclaredMethods();
+            for (Method method : methods) {
+                if (method.isAnnotationPresent(Mapping.class)) {
+                    String path = method.getAnnotation(Mapping.class).value();
+                    if (requestPath.equals(path)) {
+                        invoke(controller, method, request, response);
+                        return;
+                    }
+                }
+            }
+        }
+        throw new PageNotFoundException("request=" + requestPath);
+    }
+
+    private void invoke(Object controller, Method method, HttpRequest request, HttpResponse response) {
+
+        Class<?>[] parameterTypes = method.getParameterTypes();
+        // request, response
+        Object[] args = new Object[parameterTypes.length];
+
+        for (int i = 0; i < parameterTypes.length; i++) {
+            if (parameterTypes[i] == HttpRequest.class) {
+                args[i] = request;
+            } else if (parameterTypes[i] == HttpResponse.class) {
+                args[i] = response;
+            } else {
+                throw new IllegalArgumentException("Unsupported parameter type: " + parameterTypes[i]);
+            }
+        }
+
+        try {
+            method.invoke(controller, args);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}

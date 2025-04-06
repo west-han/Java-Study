@@ -4,6 +4,7 @@ import advanced2.was.httpserver.servlet.InternalErrorServlet;
 import advanced2.was.httpserver.servlet.NotFoundServlet;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,7 +33,7 @@ public class ServletManager {
         internalErrorServlet = servlet;
     }
 
-    public void execute(HttpRequest request, HttpResponse response) throws IOException {
+    public void execute(HttpRequest request, HttpResponse response) throws IOException, InvocationTargetException, IllegalAccessException {
         try {
             HttpServlet servlet = servletMap.getOrDefault(request.getPath(), defaultServlet);
             if (servlet == null) {
@@ -45,6 +46,8 @@ public class ServletManager {
         } catch (IOException e) {
             e.printStackTrace();
             internalErrorServlet.service(request, response);
+        } catch (InvocationTargetException | IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
     }
 }

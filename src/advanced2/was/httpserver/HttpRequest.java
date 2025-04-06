@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
+import static advanced2.util.MyLogger.log;
 import static java.net.URLDecoder.decode;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -27,6 +29,30 @@ public class HttpRequest {
     public HttpRequest(BufferedReader reader) throws IOException {
         parseRequestLine(reader);
         parseHeader(reader);
+        parseBody(reader);
+    }
+
+    private void parseBody(BufferedReader reader) throws IOException {
+        if (!headers.containsKey("Content-Length")) {
+            return;
+        }
+
+        int contentLength = Integer.parseInt(headers.get("Content-Length"));
+        char[] bodyChars = new char[contentLength];
+        int read = reader.read(bodyChars);
+        if (read != contentLength) {
+            throw new IOException("Fail to read entire body. Expected " + contentLength + " bytes, but got " + read);
+        }
+        String body = new String(bodyChars);
+        log("HTTP Message Body: " + body);
+
+        String contentType = headers.get("Content-Type");
+        if ("application/x-www-form-urlencoded".equals(contentType)) {
+            // id=id1&name=name1&age=30
+
+            // /search?q=hello&hi=ko
+            parseQueryParameters(body);
+        }
     }
 
     private void parseRequestLine(BufferedReader reader) throws IOException {
@@ -47,7 +73,6 @@ public class HttpRequest {
         if (pathParts.length > 1) {
             parseQueryParameters(pathParts[1]);
         }
-
     }
 
     private void parseQueryParameters(String queryParameters) {

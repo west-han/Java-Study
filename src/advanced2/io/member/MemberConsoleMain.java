@@ -13,9 +13,9 @@ public class MemberConsoleMain {
 
     private static final MemberRepository repository =
 //            new MemoryMemberRepository(new ArrayList<>());
-//            new FileMemberRepository();
+            new FileMemberRepository();
 //            new DataMemberRepository();
-            new ObjectMemberRepository();
+//            new ObjectMemberRepository();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

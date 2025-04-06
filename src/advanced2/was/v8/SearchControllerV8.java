@@ -1,10 +1,10 @@
-package advanced2.was.v7;
+package advanced2.was.v8;
 
 import advanced2.was.httpserver.HttpRequest;
 import advanced2.was.httpserver.HttpResponse;
 import advanced2.was.httpserver.servlet.annotation.Mapping;
 
-public class SearchControllerV7 {
+public class SearchControllerV8 {
 
     @Mapping("/search")
     public void search(HttpRequest request, HttpResponse response) {
